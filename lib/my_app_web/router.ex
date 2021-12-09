@@ -1,5 +1,6 @@
 defmodule MyAppWeb.Router do
   use MyAppWeb, :router
+  import Phoenix.LiveView.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -16,6 +17,8 @@ defmodule MyAppWeb.Router do
 
   scope "/", MyAppWeb do
     pipe_through :browser
+
+    live "/counter", CounterLive
 
     get "/", PageController, :index
   end
